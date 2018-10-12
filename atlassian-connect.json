@@ -21,20 +21,33 @@
         "READ"
     ],
     "modules": {
-        "generalPages": [
-            {
-                "key": "hello-world-page-confluence",
-                "location": "system.header/left",
-                "name": {
-                    "value": "Hello World"
-                },
-                "url": "/hello-world",
-                "conditions": [{
-                    "condition": "user_is_logged_in"
-                }]
-            }
-        ]
-    },
+    "staticContentMacros": [{
+        "url": "/v1/backgroundColor?color={color}&userKey={user.key}&pageId={page.id}&pageVersion={page.version}¯oHash={macro.hash}",
+        "description": {
+            "value": "Allow users to add a background colour around selected content."
+        },
+        "documentation": {
+            "url" : "http://www.google.com"
+        },
+        "categories": ["formatting"],
+        "outputType": "inline",
+        "bodyType": "rich-text",
+        "name": {
+            "value": "Background Colour (Connect)"
+        },
+        "key": "bg-color-macro",
+        "parameters": [{
+            "identifier": "color",
+            "name": {
+                "value": "Color"
+            },
+            "type": "string",
+            "required": true,
+            "multiple": false
+        }]
+    }]
+}
+,
     "apiMigrations": {
         "gdpr": true
     }
