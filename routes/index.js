@@ -1,5 +1,7 @@
 module.exports = function (app, addon) {
 
+
+
     // Root route. This route will serve the `atlassian-connect.json` unless the
     // documentation url inside `atlassian-connect.json` is set
     app.get('/', function (req, res) {
@@ -30,28 +32,33 @@ module.exports = function (app, addon) {
 
     // Render the background-color macro.
 // Render the background-color macro.
-app.get('/v1/backgroundColor', function(req, res){
+app.get('/v1/backgroundColor', addon.authenticate(), function(req, res){
 
     //  Grab all input parameters - sent through to us as query params.
     var color       = req.query['color'],
         pageId      = req.query['pageId'],
         pageVersion = req.query['pageVersion'],
         macroHash   = req.query['macroHash'],
-        userKey     = req.query['user_key'];
+        userKey     = req.query['userKey'];
     var clientKey = req.context.clientKey;
 
-    // Returns a HTTP client which can make calls to our host product.
+
+// Returns a HTTP client which can make calls to our host product.
 // @param clientKey formed when app created.
 // @param userKey formed when app created.
 // @returns {*} http client
 
+
+
 function getHTTPClient (clientKey, userKey){
+
     return addon.httpClient({
-        clientKey : clientKey,
+        clientKey : clientKey, //not being sent / undefined
         userKey   : userKey,
         appKey    : addon.key
     });
 }
+
 
 
     //  Execute API request to get the macro body.

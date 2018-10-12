@@ -22,7 +22,7 @@
     ],
     "modules": {
     "staticContentMacros": [{
-        "url": "/v1/backgroundColor?color={color}&userKey={user.key}&pageId={page.id}&pageVersion={page.version}¯oHash={macro.hash}",
+        "url": "/v1/backgroundColor?color={color}&userKey={user.key}&pageId={page.id}&pageVersion={page.version}&oHash={macro.hash}",
         "description": {
             "value": "Allow users to add a background colour around selected content."
         },
